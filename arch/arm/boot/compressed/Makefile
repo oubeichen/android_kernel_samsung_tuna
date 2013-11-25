@@ -150,3 +150,13 @@ $(obj)/font.c: $(FONTC)
 
 $(obj)/vmlinux.lds: $(obj)/vmlinux.lds.in arch/arm/boot/Makefile $(KCONFIG_CONFIG)
 	@sed "$(SEDFLAGS)" < $< > $@
+
+
+AFLAGS_head.o += -Wa,-march=armv7-a$(plus_sec)
+AFLAGS_misc.o +=-Wa,-march=armv7-a$(plus_sec)
+AFLAGS_decompress.o += -Wa,-march=armv7-a$(plus_sec)
+
+AFLAGS_lib1funcs.o +=-Wa,-march=armv7-a$(plus_sec)
+
+AFLAGS_piggy.$(suffix_y).o += -Wa,-march=armv7-a$(plus_sec)
+
